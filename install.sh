@@ -1,8 +1,10 @@
-cp .env_example .env
-
-if [ ! -f .env ]; then
-  echo "File .env tidak ditemukan. Silakan pastikan file tersebut tersedia."
-  exit 1
+if [ -f .env ]; then
+  read -p "File .env sudah ada. Apakah Anda ingin menimpa? (y/n): " overwrite
+  if [ "$overwrite" != "y" ]; then
+    echo "Pengoperasian dibatalkan. Tidak ada file yang ditimpa."
+    continue
+  fi
+  cp .env_example .env
 fi
 
 if [ ! -d env ]; then
