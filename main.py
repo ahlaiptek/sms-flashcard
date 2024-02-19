@@ -11,10 +11,10 @@ number = os.getenv('NUMBER')
 question = os.getenv('QUESTION')
 sleep = os.getenv('SLEEP')
 
-data = utils.read_json('data.json')
-data = random.choice(data)
+data_json = utils.read_json('data.json')
 
 while True:
+    data = random.choice(data_json)
     utils.send_sms(number, data[0])
     utils.sleep(question)
     utils.send_sms(number, f'[Baiklah] {data[1]}')
